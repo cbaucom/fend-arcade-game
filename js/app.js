@@ -24,21 +24,82 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function() {
-    this.sprite = 'images/char-boy.png';
-};
+class Player {
+    constructor() {
+        this.sprite = 'images/char-boy.png';
+        this.currentPosition = BOARD.playerStartPosition;
+        this.pressedKey = null;
+        this.halfWidth = 30;
+    }
 
-Player.prototype.update = function() {
+    getX() {
+        return this.currentPosition.x;
+    }
 
-};
+    getY() {
+        return this.currentPosition.y;
+    }
 
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+    getHalfWidth() {
+        return this.halfWidth;
+    }
+    
+    // update player's position inside the board.
+    update() {
+        if (this.currentPosition.y === 404-83*5) {
+            window.alert("you won!! press ok if you want to play again!");
+            this.resetPlayer();
+        }
+        switch(this.pressedKey) {
+            case null:
+                // no input. don't do anything. 
+                break;
+            case "left":
+                // move left if player is not in the left boundary
+                if (this.currentPosition.x !== BOARD.Boundary.left) {
+                    this.currentPosition.x -= BOARD.dx;
+                } 
+                break;
+            case "up":
+                // move up if player is not in the upper boundary
+                if (this.currentPosition.y !== BOARD.Boundary.up) {
+                    this.currentPosition.y -= BOARD.dy;
+                }
+                break;
+            case "right":
+                // move right if player is not in the right boundary
+                if (this.currentPosition.x !== BOARD.Boundary.right) {
+                    this.currentPosition.x += BOARD.dx;
+                }
+                break;
+            case "down":
+                // move down if player is not in the down boundary
+                if (this.currentPosition.y !== BOARD.Boundary.down) {
+                    this.currentPosition.y += BOARD.dy;
+                }
+                break;
+        }
 
-Player.prototype.handleInput = function(key) {
+        this.pressedKey = null;
+    }
 
-};
+    resetPlayer() {
+        this.currentPosition.x = 202;
+        this.currentPosition.y = 404;
+        this.render();
+    }
+
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.currentPosition.x, this.currentPosition.y);
+    }
+
+    handleInput(keyInput) {
+        this.pressedKey = keyInput;
+    }
+    
+}
+
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
