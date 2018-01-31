@@ -1,3 +1,27 @@
+"use strict";
+
+// BOARD values to determine objects moves and position
+// width, height, numRows, numCols refer to values from engine.js
+const BOARD = {
+    width : 505,
+    height : 606,
+    numRows : 6,
+    numCols : 5,
+    dx : 101,
+    dy : 83,
+    playerStartPosition: {
+        x : 202,
+        y : 404,
+    },
+    Boundary : { // inclusive values
+        left : 0,
+        right : 404,
+        up : 404-83*5,
+        down : 404,
+    },
+}
+Object.seal(BOARD);
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
