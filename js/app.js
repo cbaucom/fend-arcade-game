@@ -46,6 +46,13 @@ Enemy.prototype.update = function(dt) {
         this.x = BOARD.Boundary.left;
     } else {
         this.x += this.speed * dt;
+        
+        // collision detection
+        if (this.y === player.getY()) {
+            if (Math.abs(this.x - player.getX()) < (this.halfWidth + player.getHalfWidth())) {
+                player.resetPlayer();
+            }
+        } 
     }
 };
 
