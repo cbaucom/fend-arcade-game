@@ -30,7 +30,8 @@ var Enemy = function(y, speed) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = 0;
+    // this.x = 0;
+    this.x = Math.random() * 404;
     this.y = y;
     this.speed = speed;
     this.halfWidth = 45;
@@ -144,7 +145,7 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const allEnemies = [new Enemy(404-83*1, 100), new Enemy(404-83*2, 50), new Enemy(404-83*3, 150), new Enemy(404-83*4, 200)];
+const allEnemies = [new Enemy(404-83*1, 100), new Enemy(404-83*2, 250), new Enemy(404-83*3, 150), new Enemy(404-83*4, 200)];
 const player = new Player();
 
 
