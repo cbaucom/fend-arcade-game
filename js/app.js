@@ -42,6 +42,11 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.x > BOARD.Boundary.right) {
+        this.x = BOARD.Boundary.left;
+    } else {
+        this.x += this.speed * dt;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -132,7 +137,7 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const allEnemies = [new Enemy(404-83*1, 90), new Enemy(404-83*4, 120)];
+const allEnemies = [new Enemy(404-83*1, 100), new Enemy(404-83*2, 50), new Enemy(404-83*3, 150), new Enemy(404-83*4, 200)];
 const player = new Player();
 
 
