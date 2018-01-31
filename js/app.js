@@ -23,13 +23,17 @@ const BOARD = {
 Object.seal(BOARD);
 
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.x = 0;
+    this.y = y;
+    this.speed = speed;
+    this.halfWidth = 45;
 };
 
 // Update the enemy's position, required method for game
@@ -128,7 +132,7 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const allEnemies = [];
+const allEnemies = [new Enemy(404-83*1, 90), new Enemy(404-83*4, 120)];
 const player = new Player();
 
 
