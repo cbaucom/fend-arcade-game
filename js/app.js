@@ -22,6 +22,29 @@ const BOARD = {
 }
 Object.seal(BOARD);
 
+// declaring important variable of different modales
+let modal = document.querySelector(".start-game");
+let overlay = document.querySelector(".overlay");
+let gameover = document.querySelector(".game-over");
+let winnerModal = document.querySelector(".winner");
+
+//this function starts the game
+function startGame(){
+    modal.classList.add("hide");
+    overlay.classList.add("hide");
+}
+
+//this is run when player looses all lives
+function gameOver(){
+    overlay.classList.add("show");
+    gameover.classList.add("show");
+}
+
+// this function resets the game
+function resetGame(){
+    window.location.reload(true);
+}
+
 // Enemies our player must avoid
 var Enemy = function(y, speed) {
     // Variables applied to each of our instances go here,
@@ -88,7 +111,7 @@ class Player {
     // update player's position inside the board.
     update() {
         if (this.currentPosition.y === 404-83*5) {
-            window.alert("you won!! press ok if you want to play again!");
+            this.youWin();
             this.resetPlayer();
         }
         switch(this.pressedKey) {
@@ -122,6 +145,11 @@ class Player {
         }
 
         this.pressedKey = null;
+    }
+
+    youWin() {
+        overlay.classList.add("show");
+        winnerModal.classList.add("show");
     }
 
     resetPlayer() {
