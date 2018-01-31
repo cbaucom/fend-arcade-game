@@ -28,10 +28,18 @@ let overlay = document.querySelector(".overlay");
 let gameover = document.querySelector(".game-over");
 let winnerModal = document.querySelector(".winner");
 
+let playerLives = 3;
+
 //this function starts the game
 function startGame(){
     modal.classList.add("hide");
     overlay.classList.add("hide");
+}
+
+function checkLives() {
+    if (lives.length === 0){    
+        gameOver()
+    }
 }
 
 //this is run when player looses all lives
@@ -75,8 +83,11 @@ Enemy.prototype.update = function(dt) {
         if (this.y === player.getY()) {
             if (Math.abs(this.x - player.getX()) < (this.halfWidth + player.getHalfWidth())) {
                 player.resetPlayer();
+                lives.pop();
+                playerLives -= 1
             }
         } 
+        checkLives();
     }
 };
 
@@ -165,16 +176,30 @@ class Player {
     handleInput(keyInput) {
         this.pressedKey = keyInput;
     }
-    
 }
 
+// Lives class
+class Lives {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.sprite = 'images/Heart.png';
+    }
 
-
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y, 28, 42);
+    }
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
 const allEnemies = [new Enemy(404-83*1, 100), new Enemy(404-83*2, 250), new Enemy(404-83*3, 150), new Enemy(404-83*4, 200)];
+
+// Place the player object in a variable called player
 const player = new Player();
+
+// Place all life objects in an array called lives
+let lives = [ new Lives(208, 540), new Lives(239, 540), new Lives(270, 540)];
+
 
 
 // This listens for key presses and sends the keys to your
