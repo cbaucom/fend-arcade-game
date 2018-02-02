@@ -23,16 +23,18 @@ const BOARD = {
 Object.seal(BOARD);
 
 // declaring important variable of different modales
-let modal = document.querySelector(".start-game");
+let startModal = document.querySelector(".start-game");
 let overlay = document.querySelector(".overlay");
 let gameover = document.querySelector(".game-over");
 let winnerModal = document.querySelector(".winner");
+let scoreText = document.querySelector(".player-score");
 
 let playerLives = 3;
+let playerScore = 0;
 
 //this function starts the game
 function startGame(){
-    modal.classList.add("hide");
+    startModal.classList.add("hide");
     overlay.classList.add("hide");
 }
 
@@ -122,7 +124,12 @@ class Player {
     // update player's position inside the board.
     update() {
         if (this.currentPosition.y === 404-83*5) {
-            this.youWin();
+            updateScore();
+
+            if (playerScore == 100) {
+                this.youWin();        
+            }
+
             this.resetPlayer();
         }
         switch(this.pressedKey) {
@@ -190,17 +197,29 @@ class Lives {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y, 28, 42);
     }
 }
+
+// initialize the score to 0
+function initScore() {
+    playerScore = 0;
+    scoreText.textContent = playerScore;
+}
+
+// update the score count
+function updateScore() {
+    playerScore += 10;
+
+    scoreText.textContent = playerScore;
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-const allEnemies = [new Enemy(404-83*1, 100), new Enemy(404-83*2, 250), new Enemy(404-83*3, 150), new Enemy(404-83*4, 200)];
+const allEnemies = [new Enemy(404-83*2, 275), new Enemy(404-83*3, 150), new Enemy(404-83*4, 200)];
 
 // Place the player object in a variable called player
 const player = new Player();
 
 // Place all life objects in an array called lives
 let lives = [ new Lives(208, 540), new Lives(239, 540), new Lives(270, 540)];
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

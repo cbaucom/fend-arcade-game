@@ -10,7 +10,9 @@
     <div class="header">
         <h1>Arcade Game</h1>
     </div>
-    
+    <div id="score">Score: 
+        <span class="player-score">0</span>
+    </div>
     <!-- dark overlay -->
     <div class="overlay"></div>
 
@@ -19,13 +21,15 @@
         <h1>Instructions</h1>
         <p>Use your arrow keys to move the player: up, down, left, right. The object is to make it to the top water blocks but don't hit the bugs! You lose a life on any collison. 3 strikes and you're out!</p>
 
+        <p>100 points wins the game!</p>
+        
         <button onclick="startGame()">Let's Play!</button>
     </div>
 
     <!-- modal for when player looses all lives -->
     <div class="game-over">
         <h1>Game Over</h1>
-        <h3>Play again to win the game</h3>
+        <h3>Get 100 points to win the game. Watch out for bugs!</h3>
         
         <button onclick="resetGame()">Play Again</button>
     </div>
@@ -34,7 +38,6 @@
     <div class="winner">
         <h1>Winner!</h1>
         <h2>Great job! You just won!</h2>
-        <h3>Play again to win again</h3>
         
         <button onclick="resetGame()">Play Again</button>
     </div>
