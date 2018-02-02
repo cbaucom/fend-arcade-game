@@ -19,7 +19,7 @@ const BOARD = {
         up : 404-83*5,
         down : 404,
     },
-}
+};
 Object.seal(BOARD);
 
 // declaring important variable of different modales
@@ -40,7 +40,7 @@ function startGame(){
 
 function checkLives() {
     if (lives.length === 0){    
-        gameOver()
+        gameOver();
     }
 }
 
@@ -86,7 +86,7 @@ Enemy.prototype.update = function(dt) {
             if (Math.abs(this.x - player.getX()) < (this.halfWidth + player.getHalfWidth())) {
                 player.resetPlayer();
                 lives.pop();
-                playerLives -= 1
+                playerLives -= 1;
             }
         } 
         checkLives();
