@@ -1,6 +1,15 @@
-frontend-nanodegree-arcade-game
-===============================
+# Classic Arcade Game Clone
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Installation
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+* Download the repository.
+* Navigate to where you downloaded the files.
+* Double-click index.html to open the game in your browser.
+
+## How The Game Works
+
+In this game you have a Player and Enemies (Bugs).
+
+![alt text](https://d17h27t6h515a5.cloudfront.net/topher/2017/June/5931c951_frogger/frogger.png)
+
+The goal of the player is to reach the water, without colliding into any one of the enemies. The player can move left, right, up and down. The enemies move in varying speeds on the paved block portion of the scene. Once a the player collides with an enemy, a life is lost and the player moves back to the start square. If you lose all 3 lives, the game is reset. Once the player reaches the water, 10 points is added to the player's score. Once the player gets 100 points, the game is won.
